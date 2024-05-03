@@ -202,7 +202,6 @@ std::istream &operator>>(std::istream &in, IntHuge &huge)
 
     std::reverse(number.begin(), number.end());
 
-
     delete[] huge.data;
 
     huge.size = number.length();
@@ -219,5 +218,6 @@ std::ostream &operator<<(std::ostream &out, const IntHuge &huge)
     for (int i = huge.size - 1; i >= 0; i--) {
         out << huge.data[i];
     }
+    
     return out;
 }
