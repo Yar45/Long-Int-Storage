@@ -1,53 +1,52 @@
+#pragma once
+
 #include <iostream>
-#include <algorithm>
-#include <string>
 
-class IntHuge {
+#define MAX_STRING_INPUT_LEN 256
+
+class IntHuge
+{
 private:
-    int* data;
-    int size;
+	bool isNegativeNum;
+	unsigned int* digit;
+	unsigned int length;
 
+	bool isAbsCalc;
+
+	void reset();
+	void getMinMax(IntHuge** maxInt, IntHuge** minInt, IntHuge* num1, IntHuge* num2) const;
+
+	IntHuge(bool _isNegativeNum, unsigned int* _digit, unsigned int _length);
+	IntHuge(bool _isNegativeNum, unsigned int* _digit, unsigned int _length, bool _isAbs);
 public:
-    IntHuge();
+	IntHuge();
+	IntHuge(const char* num);
+	IntHuge(const char* num, bool isAbs);
+	IntHuge(const IntHuge& num);
+	~IntHuge();
 
-    IntHuge(const IntHuge& other);
+	bool isNegative() const;
+	unsigned int* getDigits() const;
+	unsigned int getLength() const;
+	bool isAbs() const;
 
-    ~IntHuge();
+	IntHuge operator + (const IntHuge& num) const;
+	IntHuge& operator += (const IntHuge& num);
+	IntHuge operator - (const IntHuge& num) const;
+	IntHuge& operator -= (const IntHuge& num);
+	IntHuge operator * (const IntHuge& num) const;
+	IntHuge& operator *= (const IntHuge& num);
+	IntHuge operator * (int num) const;
+	IntHuge& operator *= (int num);
 
-    void set(int index, int value);
+	bool operator == (const char* num) const;
+	bool operator == (const IntHuge& num) const;
+	bool operator != (const IntHuge& num) const;
+	bool operator > (const IntHuge& num) const;
+	bool operator < (const IntHuge& num) const;
+	bool operator >= (const IntHuge& num) const;
+	bool operator <= (const IntHuge& num) const;
 
-    int get(int index) const;
-
-    IntHuge(const std::string& number);
-
-    IntHuge& operator=(const IntHuge& other);
-
-    IntHuge& operator+=(const IntHuge& other);
-
-    IntHuge& operator-=(const IntHuge& other);
-
-    bool operator==(const IntHuge& other) const;
-
-    bool operator<(const IntHuge& other) const;
-
-    IntHuge operator*(int multiplier) const;
-
-    IntHuge operator-(const IntHuge& other) const;
-
-    bool operator>(const IntHuge& other) const;
-    bool operator<=(const IntHuge& other) const;
-
-    bool operator>=(const IntHuge& other) const;
-
-    IntHuge operator*(const IntHuge& other) const;
-
-    IntHuge& operator*=(const IntHuge& other);
-
-    IntHuge operator+(const IntHuge& other) const;
-
-    bool operator!=(const IntHuge& other) const;
-
-    friend std::ostream& operator<<(std::ostream& out, const IntHuge& huge);
-
-    friend std::istream& operator>>(std::istream& in, IntHuge& huge);
+	friend std::ostream& operator<<(std::ostream& os, const IntHuge& num);
+	friend std::istream& operator>>(std::istream& is, IntHuge& num);
 };
