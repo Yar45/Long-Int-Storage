@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Название вашего проекта
+project(MyProject)
+
+# Включите стандарт C++11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Добавьте исполняемый файл
+add_executable(MyExecutable main.cpp IntHuge.cpp)
+
+# Если у вас есть дополнительные библиотеки, добавьте их здесь
+# target_link_libraries(MyExecutable SomeOtherLibrary)
+
+# Добавьте директории с заголовочными файлами
+target_include_directories(MyExecutable PUBLIC include)
