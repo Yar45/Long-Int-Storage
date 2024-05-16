@@ -7,11 +7,14 @@ project(MyProject)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Добавьте исполняемый файл
-add_executable(MyExecutable main.cpp IntHuge.cpp)
-
-# Если у вас есть дополнительные библиотеки, добавьте их здесь
-# target_link_libraries(MyExecutable SomeOtherLibrary)
-
 # Добавьте директории с заголовочными файлами
-target_include_directories(MyExecutable PUBLIC include)
+target_include_directories(MyMain PUBLIC include)
+
+# Добавьте исполняемый файл
+add_executable(MyMain main.cpp IntHuge.cpp)
+
+# Добавьте тестовый файл
+add_executable(MyTests test/tests.cpp IntHuge.cpp)
+
+# Добавляем тест в CTest
+add_test(NAME MyTest COMMAND MyTests)
