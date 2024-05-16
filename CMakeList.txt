@@ -17,4 +17,23 @@ add_executable(MyMain src/main.cpp src/IntHuge.cpp)
 add_executable(MyTests test/tests.cpp src/IntHuge.cpp)
 
 # Добавляем тест в CTest
-add_test(NAME MyTest COMMAND MyTests)
+add_test(NAME MyTests COMMAND MyTests)
+
+
+# Добавление исходных файлов
+#set(SOURCES 
+#    src/main.cpp
+#    src/other_file.cpp
+#)
+
+# Добавление заголовочных файлов
+#include_directories(include)
+
+# Создание исполняемого файла из исходников
+#add_executable(MyExecutable ${SOURCES})
+
+# Добавление тестов
+#add_executable(MyTests 
+#    tests/test_main.cpp
+#    tests/test_other_file.cpp
+#)
