@@ -11,10 +11,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 target_include_directories(MyMain PUBLIC include)
 
 # Добавьте исполняемый файл
-add_executable(MyMain main.cpp IntHuge.cpp)
+add_executable(MyMain src/main.cpp src/IntHuge.cpp)
 
 # Добавьте тестовый файл
-add_executable(MyTests test/tests.cpp IntHuge.cpp)
+add_executable(MyTests test/tests.cpp src/IntHuge.cpp)
 
 # Добавляем тест в CTest
 add_test(NAME MyTest COMMAND MyTests)
